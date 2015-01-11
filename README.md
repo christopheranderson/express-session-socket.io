@@ -4,9 +4,9 @@ Simple middleware to expose express session objects inside socket.io
 
 ## Example usage:
 ```
-io.use(require('express-session-socket.io')(sessionStore, 'very Secure Secret', function () {
+io.use(require('express-session-socket.io')(sessionStore, 'very Secure Secret', function (err, session, socket, next) {
     if (err) next(err);
-    socket.handshake.passport = data.passport;
+    socket.session = session;
     next();
 }));
 ```
